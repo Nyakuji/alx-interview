@@ -1,2 +1,5 @@
-_pycache_
+__pycache__
 *main.py
+*main.cpython-36.pyc
+*main_test.py
+*main_0.py
