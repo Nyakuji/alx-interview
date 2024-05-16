@@ -1,10 +1,20 @@
 #!/usr/bin/python3
 """Log parsing"""
+
 import sys
 
 
 def print_stats(total_size, status_codes):
-    """Prints the statistics"""
+    """Prints the statistics
+
+    Args:
+        total_size (int): The total size of the files.
+        status_codes (dict): A dictionary containing
+        the count of each status code.
+
+    Returns:
+        None
+    """
     print("File size: {}".format(total_size))
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
@@ -12,7 +22,17 @@ def print_stats(total_size, status_codes):
 
 
 def parse_line(line, total_size, status_codes):
-    """Parses a single line"""
+    """Parses a single line
+
+    Args:
+        line (str): The line to be parsed.
+        total_size (int): The current total size of the files.
+        status_codes (dict): A dictionary containing
+        the count of each status code.
+
+    Returns:
+        tuple: A tuple containing the updated total size and status codes.
+    """
     try:
         parts = line.split()
         file_size = int(parts[-1])
@@ -26,7 +46,19 @@ def parse_line(line, total_size, status_codes):
 
 
 def log_parsing():
-    """Main function"""
+    """Main function
+
+    This function reads log lines from the standard input, parses each line,
+    and keeps track of the total file size and the count of each status code.
+    It then prints the statistics at regular intervals or when interrupted by
+    a keyboard interrupt.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     total_size = 0
     status_codes = {
         200: 0,
